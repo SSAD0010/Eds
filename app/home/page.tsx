@@ -17,7 +17,7 @@ export default function page() {
           />
           <div>
             <h1 className=" flex scroll-m-20 text-4xl font-bold tracking-tight lg:text-5xl">
-              DolmarLand
+              Dolmar Land
               <br />
             </h1>
             <p className="text-sm"> Building and Serving for your Tomorrow</p>

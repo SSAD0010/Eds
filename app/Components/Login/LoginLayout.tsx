@@ -32,7 +32,7 @@ export default function LoginLayout() {
     <div>
       <Card className="w-[350px]">
         <CardHeader>
-          <CardTitle>DolmarLand</CardTitle>
+          <CardTitle>Dolmar Land</CardTitle>
           <CardDescription>
             Building and Serving for your Tomorrow
           </CardDescription>

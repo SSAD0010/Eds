@@ -12,9 +12,9 @@ export default function AppsidebarTitle() {
         />
       </div>
       <div className="mt-2 text-sm px-2 ">
-        <span className="text-foreground font- font-semibold">DolmarLand</span>{" "}
+        <span className="text-foreground font- font-semibold">Dolmar Land Inc</span>{" "}
         <br />
-        <span className="text-foreground font- ">Venture Inc</span>
+        <span className="text-foreground font- "> </span>
       </div>
       <div></div>
     </div>

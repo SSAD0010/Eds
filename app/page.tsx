@@ -15,7 +15,7 @@ import Image from "next/image";
 import { useAppContext } from "@/context";
 export default function Home() {
   const { toast } = useToast();
-  const {  setuseInfo } = useAppContext();
+  const { setuseInfo } = useAppContext();
 
   // const [name] = useState("x");
   // const [email] = useState("x");
@@ -52,112 +52,111 @@ export default function Home() {
     })();
   }, []);
 
-
-
   useEffect(() => {
     (async () => {
       const data = await getUserInfo();
-      console.log({data})
+      console.log({ data });
       setuseInfo(data);
       if (!data?.user?.username) {
         return;
       }
       router.push("/home");
     })();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
 
   return (
     <div className=" content  w-fit mx-auto   grid  mt-4  items-center justify-items-center  gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       {/* <LoginLayout /> */}
-<div className="  p-4 rounded-md bg w-[360px]">
-  
-<form
-        className="max-w-[300px] grid  gap-4  mx-auto  rounded-md "
-        action={async (data) => {
-          setloading(true);
-          toast({
-            title: "",
-            description: "Logging in ...",
-          });
-          const pass = await toEnrypt((data.get("Password") as string) || "");
-          // console.log(pass);
-          const x = await EXEC_API({
-            SQLID: 6,
-            VAL1: (data.get("Username") as string) || "",
-            VAL2: pass || "",
-          });
-          // console.log({ x });
-          x.error
-            ? toast({
-                title: "Error",
-                description:
-                  x.error.originalError?.info?.message ||
-                  "An unexpected error occurred.",
-              })
-            : x.length == 0
-            ? toast({
-                title: "",
-                description: "Your account or password is incorrect.",
-              })
-            : setSessionAndRedirect(data, x).then(redirect("/licensing"));
-          setloading(false);
-        }}
-      >
-        <div className="flex gap-2 max-w-[320px] px-4">
-          <Image
-            src={dolmarlogo}
-            alt="Picture of the author"
-            className="bg-white rounded-md p-1  max-w-[60px] max-h-[60px]"
-          />
-          <div>
-            <h1 className=" flex scroll-m-20 text-4xl font-bold tracking-tight lg:text-4xl">
-              DolmarLand
-              <br />
-            </h1>
-            <p className="text-sm"> Building and Serving for your Tomorrow</p>
+      <div className="  p-4 rounded-md bg w-[360px]">
+        <form
+          className="max-w-[300px] grid  gap-4  mx-auto  rounded-md "
+          action={async (data) => {
+            setloading(true);
+            toast({
+              title: "",
+              description: "Logging in ...",
+            });
+            const pass = await toEnrypt((data.get("Password") as string) || "");
+            // console.log(pass);
+            const x = await EXEC_API({
+              SQLID: 6,
+              VAL1: (data.get("Username") as string) || "",
+              VAL2: pass || "",
+            });
+            // console.log({ x });
+            x.error
+              ? toast({
+                  title: "Error",
+                  description:
+                    x.error.originalError?.info?.message ||
+                    "An unexpected error occurred.",
+                })
+              : x.length == 0
+              ? toast({
+                  title: "",
+                  description: "Your account or password is incorrect.",
+                })
+              : setSessionAndRedirect(data, x).then(redirect("/licensing"));
+            setloading(false);
+          }}
+        >
+          <div className="flex gap-2 max-w-[420px] ">
+            <Image
+              src={dolmarlogo}
+              alt="Picture of the author"
+              className="bg-white rounded-md p-1  max-w-[60px] max-h-[60px]"
+            />
+            <div>
+              <h1 className=" flex scroll-m-20 text-2xl font-bold tracking-tight lg:text-2xl">
+                Dolmar Land
+                <br />
+              </h1>
+              <p className="text-sm">
+                {" "}
+                Building and Serving <br /> for your Tomorrow
+              </p>
+            </div>
           </div>
-        </div>
-        <Input
-          type="text"
-          id="Username"
-          name="Username"
-          placeholder="Enter Username"
-          className="w-full"
-        />
-        <Input
-          type="password"
-          id="Password"
-          name="Password"
-          placeholder="Enter Password"
-          className="w-full"
-        />
-        <Separator />
-        <div className="flex justify-between">
-          {/* <Button variant="secondary" type="submit">
+          <Input
+            type="text"
+            id="Username"
+            name="Username"
+            placeholder="Enter Username"
+            className="w-full"
+          />
+          <Input
+            type="password"
+            id="Password"
+            name="Password"
+            placeholder="Enter Password"
+            className="w-full"
+          />
+          <Separator />
+          <div className="flex justify-between">
+            {/* <Button variant="secondary" type="submit">
             Register
           </Button> */}
-          <Button
-            className="w-full"
-            type="submit"
-            disabled={loading}
-            onClick={() =>
-              toast({
-                title: "",
-                description: "Logging in ...",
-              })
-            }
-          >
-            {loading ? (
-              <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
-            ) : (
-              "Login"
-            )}
-          </Button>
-        </div>
-      </form>
-</div>
+            <Button
+              className="w-full"
+              type="submit"
+              disabled={loading}
+              onClick={() =>
+                toast({
+                  title: "",
+                  description: "Logging in ...",
+                })
+              }
+            >
+              {loading ? (
+                <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                "Login"
+              )}
+            </Button>
+          </div>
+        </form>
+      </div>
       {/* <Button
         onClick={async () => {
           const Encryp = await toEnrypt("sap");
@@ -167,9 +166,7 @@ export default function Home() {
         Encryp
       </Button>   */}
 
-      <>
-      
-      </>
+      <></>
     </div>
   );
 }
